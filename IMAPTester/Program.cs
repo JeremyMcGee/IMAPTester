@@ -63,13 +63,13 @@
         [Option('p', "password", Required = true, HelpText = "Password.")]
         public string Password { get; set; }
 
-        [Option('x', "port", DefaultValue = 143, HelpText = "Port number, default 143.")]
+        [Option('x', "port", DefaultValue = 143, HelpText = "Port number.")]
         public int Port { get; set; }
 
-        [Option('s', "ssl", DefaultValue = false, HelpText = "Use SSL? Default false.")]
+        [Option('s', "ssl", HelpText = "Use SSL?")]
         public bool UseSSL { get; set; }
 
-        [Option('v', "verbose", DefaultValue = true, HelpText = "Verbose logging? Default true.")]
+        [Option('v', "verbose", HelpText = "Verbose logging?")]
         public bool Verbose { get; set; }
 
         [HelpOption]
@@ -78,11 +78,14 @@
             var help = new HelpText
             {
                 Heading = new HeadingInfo("IMAPTester", "0.0.1"),
-                Copyright = new CopyrightInfo("Jeremy McGee", 2017),
                 AdditionalNewLineAfterOption = true,
                 AddDashesToOption = true
             };
 
+            help.AddPreOptionsLine("");
+            help.AddPreOptionsLine("Tests a connection to an IMAP email server.");
+            help.AddPreOptionsLine("");
+            help.AddPreOptionsLine("Returns: non-zero if error.");
             help.AddPreOptionsLine("");
             help.AddPreOptionsLine("Usage:");
             help.AddOptions(this);
